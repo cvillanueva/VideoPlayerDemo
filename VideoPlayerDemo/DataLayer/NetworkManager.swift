@@ -169,7 +169,7 @@ enum ErrorPublisherKey: String {
 }
 
 enum Endpoint: String {
-    case videosList = "https://gist.githubusercontent.com/poudyalanil/ca84582cbeb4fc123a13290a586da925/raw/14a27bd0bcd0cd323b35ad79cf3b493dddf6216b/videos.json"
+    case videosList = "https://raw.githubusercontent.com/cvillanueva/VideoPlayerDemo/refs/heads/main/videos.json"
 }
 
 struct Result<T: Decodable> {
