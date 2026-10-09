@@ -131,6 +131,11 @@ extension NetworkManagerImpl {
     }
 }
 
+// To handle downloads
+extension NetworkManagerImpl {
+    
+}
+
 /// Intented to running tests and show SwiftUI previews
 final class MockNetworkManager: NetworkManager {
     var downloadProgressPublisher = PassthroughSubject<[String: Double], Never>()

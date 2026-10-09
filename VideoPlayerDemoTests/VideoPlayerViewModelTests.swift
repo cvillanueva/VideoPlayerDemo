@@ -30,5 +30,6 @@ struct VideoPlayerViewModelTests {
 
         #expect(viewModel.video?.id == "1")
         #expect(viewModel.video?.title == "Mock video 1")
+        #expect(((viewModel.video?.description.isEmpty) != nil))
     }
 }

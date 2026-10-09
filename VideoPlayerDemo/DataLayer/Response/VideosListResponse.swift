@@ -8,20 +8,36 @@
 import Foundation
 
 // MARK: - VideosListElement
+//struct VideosListElement: Codable {
+//    let id, title: String
+//    let thumbnailURL: String
+//    let duration, uploadTime, views, author: String
+//    let videoURL: String
+//    let description, subscriber: String
+//    let isLive: Bool
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id, title
+//        case thumbnailURL = "thumbnailUrl"
+//        case duration, uploadTime, views, author
+//        case videoURL = "videoUrl"
+//        case description, subscriber, isLive
+//    }
+//}
 struct VideosListElement: Codable {
     let id, title: String
     let thumbnailURL: String
-    let duration, uploadTime, views, author: String
+    let duration, uploadTime, views: String
+    let author: String
     let videoURL: String
-    let description, subscriber: String
-    let isLive: Bool
+    let description, favorites: String
 
     enum CodingKeys: String, CodingKey {
         case id, title
         case thumbnailURL = "thumbnailUrl"
         case duration, uploadTime, views, author
         case videoURL = "videoUrl"
-        case description, subscriber, isLive
+        case description, favorites
     }
 }
 
@@ -41,8 +57,7 @@ extension VideosList {
                 author: "Fake author 01",
                 videoURL: "https://fake.domain.com/video_01.mp4",
                 description: "Fake description 01",
-                subscriber: "1000 subscribers",
-                isLive: true
+                favorites: "1532"
             ),
             .init(
                 id: "2",
@@ -54,8 +69,7 @@ extension VideosList {
                 author: "Fake author 02",
                 videoURL: "https://fake.domain.com/video_02.mp4",
                 description: "Fake description 02",
-                subscriber: "2000 subscribers",
-                isLive: true
+                favorites: "954"
             )
         ]
     }
@@ -74,8 +88,7 @@ extension VideosListElement {
             author: "Fake author 01",
             videoURL: "https://fake.domain.com/video_01.mp4",
             description: "Fake description 01",
-            subscriber: "1000 subscribers",
-            isLive: true
+            favorites: "645"
         )
     }
 }

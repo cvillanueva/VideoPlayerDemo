@@ -45,13 +45,15 @@ struct VideoPlayerView: View {
                 }
                 .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
 
-
                 HStack {
                     Spacer()
-
-                    Text(video.subscriber)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.gray)
+                        Text(video.favorites)
+                            .font(.title3)
+                            .foregroundColor(.gray)
+                    }
                 }
                 .padding(.trailing, 16)
                 .padding(.top, 16)

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 struct CustomColor {
     static let viewBackground = Color(hex: "f5f5f5")
