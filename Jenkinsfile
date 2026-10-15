@@ -10,7 +10,7 @@ pipeline {
         
         // --- CONFIGURACIÓN DE PRUEBAS ---
         // Define el simulador y la versión de iOS instalada en tu Mac de Jenkins
-        TEST_DEVICE  = 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
+        TEST_DEVICE  = 'platform=iOS Simulator,name=iPhone 17,OS=26.3.1'
         
         // --- CONFIGURACIÓN DE DERIVED DATA ---
         // Almacenar DerivedData localmente en el workspace evita conflictos entre compilaciones
