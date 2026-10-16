@@ -15,6 +15,9 @@ pipeline {
         // --- CONFIGURACIÓN DE DERIVED DATA ---
         // Almacenar DerivedData localmente en el workspace evita conflictos entre compilaciones
         DERIVED_DATA = "${WORKSPACE}/DerivedData"
+
+        ARCHIVE_PATH = "./build/${SCHEME_NAME}.xcarchive"
+        IPA_PATH     = "./build/OutputIPA"
     }
 
     stages {
@@ -22,6 +25,9 @@ pipeline {
             steps {
                 echo 'Limpiando el directorio de Derived Data anterior...'
                 sh "rm -rf ${DERIVED_DATA}"
+            
+                echo 'Limpiando directorio build...'
+                sh "rm -rf ./build"
             }
         }
 
@@ -53,12 +59,37 @@ pipeline {
                 """
             }
         }
+
+        stage('Generar IPA') {
+            steps {
+                echo 'Generando .xcarchive...'
+                sh """
+                    xcodebuild archive \
+                    -project "${PROJECT_NAME}" \
+                    -scheme "${SCHEME_NAME}" \
+                    -configuration Release \
+                    -archivePath "${ARCHIVE_PATH}" \
+                    -destination 'generic/platform=iOS'
+                """
+
+                echo 'Exporting IPA...'
+                sh """
+                    xcodebuild -exportArchive \
+                    -archivePath "${ARCHIVE_PATH}" \
+                    -exportPath "${IPA_PATH}" \
+                    -exportOptionsPlist ExportOptions.plist
+                """
+            }
+        }
     }
 
     post {
         always {
             echo 'Limpiando espacio de DerivedData tras finalizar la ejecución...'
             sh "rm -rf ${DERIVED_DATA}"
+            
+            echo 'Limpiando directorio build...'
+            sh "rm -rf ./build"
         }
         success {
             echo '¡La compilación y las pruebas finalizaron con éxito!'
